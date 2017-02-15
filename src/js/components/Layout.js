@@ -1,14 +1,14 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import ResultList from "./ResultList";
-import Reddit from "./Reddit";
 import axios from 'axios';
 
 export default class Layout extends React.Component {
     constructor(){
         super();
         this.state = {
-            search:"reactjs"
+            search:"reactjs",
+            posts: []
         };
         this.doSearch = this.doSearch.bind(this);
     }
@@ -21,29 +21,38 @@ export default class Layout extends React.Component {
         // console.log(a);
         // console.log(b);
         this.setState({
-            search:search
+            search:search,
         });
 
         axios.get(`http://www.reddit.com/r/${search}.json`)
           .then(res => {
             const posts = res.data.data.children.map(obj => obj.data);
-            console.log(posts);
+
+            this.setState({
+                posts:posts
+            })
           });
     }
 
+
+    // makeList() {
+    //     this.setState({
+    //         title = this.title
+    // });
+
     render() {
         var displayShowResults = false;
-        let list = <li>Empty List</li>;
+        let list = <li>{}</li>;
 
         return (
             <div>
             <div id="SearchBar">
                 <SearchBar doSearch={this.doSearch} />
+                <h1>{this.state.search}</h1>
             </div>
             <div id="list">
-                <ResultList list={list} />
+                <ResultList list={this.state.posts} />
             </div>
-            <Reddit subreddit={this.state.search}/>
             </div>
 
         );
