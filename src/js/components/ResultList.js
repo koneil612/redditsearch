@@ -4,24 +4,28 @@ class Clicking extends React.Component {
     constructor() {
         super();
         this.handleClick = this.handleClick.bind(this);
-        this.userGreeting = this.userGreeting.bind(this);
+        this.postTitle = this.postTitle.bind(this);
 
     }
 
-    userGreeting() {
-            return this.props.post.title;
+    postTitle() {
+            return <div>this.props.post.title</div>;
     }
 
     handleClick(e) {
-       e.preventDefault();
-        console.log(this.props.post.title);
-            return <userGreeting />;
+       const clickPhoto = this.props.post.title;
+            return this.postTitle,
+            console.log(this.props.post.title);
 
-        }
+    }
 
     render() {
         return (
-            <img src={this.props.post.thumbnail} onClick={this.handleClick}/>
+            <div>
+            <img src={this.props.post.thumbnail} onClick={this.handleClick} />
+
+            {this.props.post.title};
+            </div>
         );
     }
 }
@@ -32,7 +36,8 @@ export default class ResultList extends React.Component {
       <ul>
       {this.props.list.map(post =>
         <li key={post.id}>
-        <Clicking post={post} />
+        <p>
+        <Clicking post={post} title={this.postTitle} /></p>
         </li>
          )}
     </ul>

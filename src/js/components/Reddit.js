@@ -18,8 +18,6 @@ export default class Reddit extends React.Component {
     //   });
   }
 
-      {this.props.value}
-
   render() {
     return (
       <div>
