@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class Clicking extends React.Component {
     constructor() {
         super();
@@ -33,14 +34,16 @@ class Clicking extends React.Component {
 export default class ResultList extends React.Component {
     render() {
     return (
-      <ul>
+        <ul>
       {this.props.list.map(post =>
         <li key={post.id}>
         <p>
         <Clicking post={post} title={this.postTitle} /></p>
         </li>
          )}
-    </ul>
+         </ul>
+
+
     )
   }
 }

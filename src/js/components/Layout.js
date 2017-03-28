@@ -13,13 +13,8 @@ export default class Layout extends React.Component {
         this.doSearch = this.doSearch.bind(this);
     }
 
-    componentDidMount(){
-    }
-
     doSearch(search,event){
         console.log("doing the search:");
-        // console.log(a);
-        // console.log(b);
         this.setState({
             search:search,
         });
@@ -34,11 +29,6 @@ export default class Layout extends React.Component {
           });
     }
 
-
-    // makeList() {
-    //     this.setState({
-    //         title = this.title
-    // });
 
     render() {
         var displayShowResults = false;
